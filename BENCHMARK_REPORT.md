@@ -1,7 +1,9 @@
 # Benchmark & Observability Report — Day 14
 
-**Họ tên:** Trần Đức Trung  
-**Ngày chạy:** 26–27/11/2026  
+**Họ tên:** Trần Đức Trung
+
+**Ngày chạy:** 26–27/11/2026
+
 **Môi trường:** Develop benchmark trên Windows 11, Python 3.12.10, AMD Ryzen 7 5800H (16 luồng logic); hai agent dùng Uvicorn cục bộ. Production benchmark trong Docker Desktop 29.5.2 qua Ubuntu 24.04 WSL2; Locust chạy trong Compose, 1 rồi 3 replica agent.
 
 ---
