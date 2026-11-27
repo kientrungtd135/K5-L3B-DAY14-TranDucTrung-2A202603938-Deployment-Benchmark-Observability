@@ -1,0 +1,263 @@
+{
+  "promtool": "PASS",
+  "scale_1": {
+    "Type": "POST",
+    "Name": "/ask",
+    "Request Count": "7108",
+    "Failure Count": "82",
+    "Median Response Time": "190",
+    "Average Response Time": "239.37301892304473",
+    "Min Response Time": "88.40874700001677",
+    "Max Response Time": "2294.72594799995",
+    "Average Content Size": "407.393078221722",
+    "Requests/s": "60.04174080867853",
+    "Failures/s": "0.6926593621710241",
+    "50%": "190",
+    "66%": "200",
+    "75%": "210",
+    "80%": "210",
+    "90%": "220",
+    "95%": "280",
+    "98%": "1700",
+    "99%": "1700",
+    "99.9%": "1800",
+    "99.99%": "2300",
+    "100%": "2300"
+  },
+  "scale_3": {
+    "Type": "POST",
+    "Name": "/ask",
+    "Request Count": "7161",
+    "Failure Count": "67",
+    "Median Response Time": "190",
+    "Average Response Time": "234.31482626714256",
+    "Min Response Time": "86.62902200001099",
+    "Max Response Time": "1777.7268750000985",
+    "Average Content Size": "408.33040078201367",
+    "Requests/s": "59.96959177780886",
+    "Failures/s": "0.561089603283507",
+    "50%": "190",
+    "66%": "200",
+    "75%": "210",
+    "80%": "210",
+    "90%": "220",
+    "95%": "230",
+    "98%": "1700",
+    "99%": "1700",
+    "99.9%": "1700",
+    "99.99%": "1800",
+    "100%": "1800"
+  },
+  "baseline_grafana": {
+    "p95_seconds": [
+      {
+        "labels": {},
+        "value": 0.291897233201581
+      }
+    ],
+    "avg_seconds": [
+      {
+        "labels": {},
+        "value": 0.2244011232206873
+      }
+    ],
+    "per_instance_rps": [
+      {
+        "labels": {
+          "instance": "172.20.0.4:8000"
+        },
+        "value": 7.728818490970921
+      },
+      {
+        "labels": {
+          "instance": "172.20.0.8:8000"
+        },
+        "value": 8.092527596428376
+      }
+    ],
+    "tokens_per_second": [
+      {
+        "labels": {
+          "type": "input"
+        },
+        "value": 1211.0240229864153
+      },
+      {
+        "labels": {
+          "type": "output"
+        },
+        "value": 631.7081598137809
+      }
+    ],
+    "nginx_metrics_status": 404,
+    "timestamp": 1795707194.3091557
+  },
+  "experiment_a": {
+    "alert": "AgentHighErrorRate",
+    "seconds_to_observed_firing": 95.5,
+    "firing_alerts": [
+      "AgentHighErrorRate",
+      "LLMCostBurnRateHigh"
+    ],
+    "alert_snapshot": {
+      "labels": {
+        "alertname": "AgentHighErrorRate",
+        "severity": "critical"
+      },
+      "annotations": {
+        "description": "Error rate hiện tại: 22.17% (SLO: < 5%)",
+        "summary": "Error rate /ask vượt 5%"
+      },
+      "state": "firing",
+      "activeAt": "2026-11-26T15:33:42.401817116Z",
+      "value": "2.2169363185312632e-01"
+    }
+  },
+  "experiment_b": {
+    "alert": "AgentHighLatencyP95",
+    "seconds_to_observed_firing": 143.6,
+    "firing_alerts": [
+      "AgentHighErrorRate",
+      "AgentHighLatencyP95"
+    ],
+    "alert_snapshot": {
+      "labels": {
+        "alertname": "AgentHighLatencyP95",
+        "severity": "warning"
+      },
+      "annotations": {
+        "description": "p95 hiện tại: 1.894s (SLO: < 1s)",
+        "summary": "p95 latency /ask vượt 1 giây"
+      },
+      "state": "firing",
+      "activeAt": "2026-11-26T15:35:07.401817116Z",
+      "value": "1.894472361809045e+00"
+    }
+  },
+  "slow_trace": {
+    "trace_id": "3e4cf1d122d421a4b4fc3c7f79841afe",
+    "total_ms": 1717.591,
+    "chat_span": "chat mock-llm-small",
+    "chat_ms": 1698.924,
+    "exception": false,
+    "log": {
+      "ts": "2026-11-27T07:21:25.259269+00:00",
+      "level": "INFO",
+      "service": "observable-agent",
+      "instance": "3d78d5df17bb",
+      "event": "llm_call",
+      "trace_id": "3e4cf1d122d421a4b4fc3c7f79841afe",
+      "span_id": "06cc85b6cb085fc3",
+      "request_id": "088ff92a85da",
+      "model": "mock-llm-small",
+      "agent_version": "v2",
+      "input_tokens": 95,
+      "output_tokens": 55,
+      "cost_usd": 4.7e-05,
+      "llm_ms": 1699.0
+    }
+  },
+  "error_trace": {
+    "trace_id": "bfcae12ba35e28f84d27be2b87412f84",
+    "total_ms": 108.098,
+    "chat_span": "chat mock-llm-small",
+    "chat_ms": 82.228,
+    "exception": true,
+    "log": {
+      "ts": "2026-11-27T07:21:31.944634+00:00",
+      "level": "INFO",
+      "service": "observable-agent",
+      "instance": "3d78d5df17bb",
+      "event": "llm_error",
+      "trace_id": "bfcae12ba35e28f84d27be2b87412f84",
+      "span_id": "ab48849a3e6d6041",
+      "request_id": "029035720c23",
+      "error": "Upstream LLM error: 503 Service Unavailable (mock)"
+    }
+  },
+  "baseline_grafana_capture": {
+    "p95_seconds": [
+      {
+        "labels": {},
+        "value": 0.2964179218954238
+      }
+    ],
+    "avg_seconds": [
+      {
+        "labels": {},
+        "value": 0.235510366154571
+      }
+    ],
+    "per_instance_rps": [
+      {
+        "labels": {
+          "instance": "172.20.0.4:8000"
+        },
+        "value": 7.080400814573692
+      },
+      {
+        "labels": {
+          "instance": "172.20.0.8:8000"
+        },
+        "value": 6.928458720978468
+      }
+    ],
+    "tokens_per_second": [
+      {
+        "labels": {
+          "type": "input"
+        },
+        "value": 1068.846775245164
+      },
+      {
+        "labels": {
+          "type": "output"
+        },
+        "value": 555.8946839534444
+      }
+    ],
+    "nginx_metrics_status": 404,
+    "timestamp": 1795763852.4386132
+  },
+  "experiment_a_capture": {
+    "alert": "AgentHighErrorRate",
+    "seconds_to_observed_firing": 90.2,
+    "firing_alerts": [
+      "AgentHighErrorRate"
+    ],
+    "alert_snapshot": {
+      "labels": {
+        "alertname": "AgentHighErrorRate",
+        "severity": "critical"
+      },
+      "annotations": {
+        "description": "Error rate hiện tại: 22.15% (SLO: < 5%)",
+        "summary": "Error rate /ask vượt 5%"
+      },
+      "state": "firing",
+      "activeAt": "2026-11-27T07:17:57.401817116Z",
+      "value": "2.2146697924516018e-01"
+    }
+  },
+  "experiment_b_capture": {
+    "alert": "AgentHighLatencyP95",
+    "seconds_to_observed_firing": 150.2,
+    "firing_alerts": [
+      "AgentHighErrorRate",
+      "AgentHighLatencyP95"
+    ],
+    "alert_snapshot": {
+      "labels": {
+        "alertname": "AgentHighLatencyP95",
+        "severity": "warning"
+      },
+      "annotations": {
+        "description": "p95 hiện tại: 1.908s (SLO: < 1s)",
+        "summary": "p95 latency /ask vượt 1 giây"
+      },
+      "state": "firing",
+      "activeAt": "2026-11-27T07:19:27.401817116Z",
+      "value": "1.9081372035176345e+00"
+    }
+  }
+}

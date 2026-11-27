@@ -75,7 +75,7 @@ services:
   # Grafana — dashboard (datasource + dashboard được provision sẵn)
   # ──────────────────────────────────────
   grafana:
-    image: grafana/grafana:13.2.4
+    image: grafana/grafana:13.2.4-ubuntu
     ports:
       - "3000:3000"
     environment:

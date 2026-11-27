@@ -94,8 +94,8 @@ Log của `docker compose up --wait` xác nhận cả bốn service `agent`, `ng
 
 ### Exercise 3.2: Render deployment
 
-- URL: chờ URL public của agent Part 6.
-- Screenshot: chờ các ảnh deploy và kiểm tra HTTP trong `screenshots/`.
+- URL: https://day14-ai-agent-6shl.onrender.com
+- Render báo Live ở commit `881102d`. Kiểm tra public nhận `/health` **200**, `/ready` **200**, `POST /ask` thiếu key **401** và có key **200**. Xem bảng kết quả tại [DEPLOYMENT.md](DEPLOYMENT.md#test-results).
 
 | Nội dung | Railway (`railway.toml`) | Render (`render.yaml`) |
 | --- | --- | --- |
@@ -265,3 +265,7 @@ Redis dùng sorted set để giữ rate limit mỗi API key qua các worker và 
 - **CP2.** Yêu cầu Codex đọc Dockerfile và Compose theo Part 2. Codex giải thích layer cache và multi-stage. Tính tỷ lệ chênh lệch từ `docker images`.
 - **CP3.** Yêu cầu Codex đọc JWT, rate limiter và cost guard của repo, rồi kiểm tra mã HTTP. Codex chạy hai agent mẫu trên loopback với khóa tạm, dùng curl để đo token trong báo cáo.
 - **CP4.** Yêu cầu Codex đọc bản mẫu scaling, kiểm tra probe và chuẩn bị kiểm tra SIGTERM, ba replica và session Redis.
+- **CP5.** Yêu cầu Codex hoàn thiện agent Part 6, cấu hình Docker và cloud theo checklist. Codex triển khai auth, rate limit và cost guard dùng Redis; tôi chạy `check_production_ready.py` trong Ubuntu WSL2 với Docker và kiểm tra kết quả `PASS 12/12`.
+- **CP6.** Yêu cầu Codex soạn cấu hình Render và hướng dẫn kiểm tra URL public. Tôi tạo Blueprint, nhập API key trên Render, chạy kiểm tra HTTP 200/200/401/200 rồi chụp dashboard, trạng thái chạy và kết quả test.
+- **CP7.** Yêu cầu Codex chạy benchmark local và điền đúng mẫu. Codex thêm histogram độ dài câu hỏi, chạy bảy lượt load test, đọc hai lỗi từ baseline v2 rồi bổ sung tài liệu HPA và JWT. Codex chạy lại eval với gate 100%, đối chiếu 10 JSON và ghi kết quả vào BENCHMARK_REPORT.md.
+- **CP8.** Yêu cầu Codex chuẩn bị và đọc kết quả Locust, Prometheus, Grafana và Jaeger. Tôi chạy script trong Ubuntu WSL2, chụp dashboard có tải, hai alert cùng firing, trace chậm và trace lỗi. Codex đối chiếu số liệu JSON/CSV, hoàn thiện `BENCHMARK_REPORT.md` theo mẫu và đưa bốn ảnh vào `screenshots/`.

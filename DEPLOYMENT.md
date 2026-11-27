@@ -2,7 +2,7 @@
 
 ## Public URL
 
-Chờ Render cấp URL public.
+https://day14-ai-agent-6shl.onrender.com
 
 ## Platform
 
@@ -13,7 +13,7 @@ Render Web Service (Docker) + Render Key Value on the free plans. Blueprint: [06
 Đặt `BASE` là URL public bằng HTTPS. Nhập API key trong terminal qua prompt ẩn trước khi chạy các lệnh này:
 
 ```bash
-BASE='https://YOUR-SERVICE.onrender.com'
+BASE='https://day14-ai-agent-6shl.onrender.com'
 read -r -s -p 'Agent API key: ' AGENT_API_KEY
 printf '\n'
 ```
@@ -40,7 +40,12 @@ unset AGENT_API_KEY
 
 ### Test Results
 
-Chờ kiểm tra HTTP trên URL public.
+| Request | HTTP thực tế |
+| --- | --- |
+| `GET /health` | 200 |
+| `GET /ready` | 200 |
+| `POST /ask` thiếu key | 401 |
+| `POST /ask` có key | 200 |
 
 ## Environment Variables Set
 
@@ -51,6 +56,6 @@ Chờ kiểm tra HTTP trên URL public.
 
 ## Screenshots
 
-- `screenshots/dashboard.png` — Deployment dashboard.
-- `screenshots/running.png` — Service running.
-- `screenshots/test.png` — HTTP test results.
+- [Deployment dashboard](screenshots/dashboard.png)
+- [Service running](screenshots/running.png)
+- [HTTP test results](screenshots/test.png)
